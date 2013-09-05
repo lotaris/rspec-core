@@ -1014,7 +1014,7 @@ module RSpec::Core
       it "actually receives the new filter values" do
         config = Configuration.new
         config.backtrace_exclusion_patterns = [/.*/]
-        expect(config.backtrace_cleaner.exclude? "this").to be_truthy
+        expect(config.backtrace_formatter.exclude? "this").to be_truthy
       end
     end
 
@@ -1034,7 +1034,7 @@ module RSpec::Core
       it "can be appended to" do
         config = Configuration.new
         config.backtrace_exclusion_patterns << /.*/
-        expect(config.backtrace_cleaner.exclude? "this").to be_truthy
+        expect(config.backtrace_formatter.exclude? "this").to be_truthy
       end
     end
 
