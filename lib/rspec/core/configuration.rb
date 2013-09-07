@@ -241,7 +241,7 @@ module RSpec
         @failure_exit_code = 1
         @spec_files_loaded = false
 
-        @ordering_registry = OrderingRegistry.new(self)
+        @ordering_registry = Ordering::Registry.new(self)
 
         @backtrace_cleaner = BacktraceCleaner.new
 
