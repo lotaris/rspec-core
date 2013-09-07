@@ -432,11 +432,6 @@ WARNING
         end
       end
 
-      # :order => MyStrategy.new
-      #
-      # :order => :my_stragegy
-      # RSpec.configuration.register_ordering_strategy :order, MyStrategy.new
-      #
       # @private
       def self.ordered_children
         ordering_strategy.order(children)
