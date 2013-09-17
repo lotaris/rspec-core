@@ -1364,7 +1364,7 @@ module RSpec::Core
 
     describe "#seed_used?" do
       def use_seed_on(registry)
-        registry[:random].order([1, 2])
+        registry.fetch(:random).order([1, 2])
       end
 
       it 'returns false if neither ordering registry used the seed' do
@@ -1444,14 +1444,14 @@ module RSpec::Core
 
       it 'stores the given custom ordering for later use' do
         list = [1, 2, 3]
-        strategy = config.group_ordering_registry[:reverse]
+        strategy = config.group_ordering_registry.fetch(:reverse)
         expect(strategy).to be_a(Ordering::Custom)
         expect(strategy.order(list)).to eq([3, 2, 1])
       end
 
       it 'does not affect the example ordering' do
         list = [1, 2, 3]
-        strategy = config.example_ordering_registry[:reverse]
+        strategy = config.example_ordering_registry.fetch(:reverse)
         expect(strategy.order(list)).to eq([1, 2, 3])
       end
     end
@@ -1461,14 +1461,14 @@ module RSpec::Core
 
       it 'stores the given custom ordering for later use' do
         list = [1, 2, 3]
-        strategy = config.example_ordering_registry[:reverse]
+        strategy = config.example_ordering_registry.fetch(:reverse)
         expect(strategy).to be_a(Ordering::Custom)
         expect(strategy.order(list)).to eq([3, 2, 1])
       end
 
       it 'does not affect the group ordering' do
         list = [1, 2, 3]
-        strategy = config.group_ordering_registry[:reverse]
+        strategy = config.group_ordering_registry.fetch(:reverse)
         expect(strategy.order(list)).to eq([1, 2, 3])
       end
     end
@@ -1478,14 +1478,14 @@ module RSpec::Core
 
       it 'stores the ordering for group use' do
         list = [1, 2, 3]
-        strategy = config.group_ordering_registry[:reverse]
+        strategy = config.group_ordering_registry.fetch(:reverse)
         expect(strategy).to be_a(Ordering::Custom)
         expect(strategy.order(list)).to eq([3, 2, 1])
       end
 
       it 'stores the ordering for example use' do
         list = [1, 2, 3]
-        strategy = config.example_ordering_registry[:reverse]
+        strategy = config.example_ordering_registry.fetch(:reverse)
         expect(strategy).to be_a(Ordering::Custom)
         expect(strategy.order(list)).to eq([3, 2, 1])
       end
